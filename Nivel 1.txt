@@ -1,0 +1,45 @@
+Nivel 1
+
+from abc import ABC, abstractmethod
+
+class Bebida(ABC):
+    def __init__(self,nombre):
+        self.nombre = nombre
+
+    @abstractmethod
+    def preparar(self):
+        pass
+
+    @abstractmethod
+    def servir(self):
+        pass
+
+class Tinto(Bebida):
+    def __init__(self, nombre, azucar):
+        super().__init__(nombre)
+        self._azucar = azucar
+
+    def preparar(self):
+        if self._azucar:
+            return f"Preparando {self.nombre} con azucar"
+        else:
+            return f"Preparando {self.nombre} sin azucar"
+
+    def servir(self):
+        if self._azucar:
+            return f"Sirviendo {self.nombre} → Endulzado listo para tomar"
+        else:
+            return f"Sirviendo {self.nombre} → Negro y sin azucar, listo para tomar"
+
+if __name__ == "__main__":
+
+    tinto1 = Tinto("Tinto del día", True)
+    tinto2 = Tinto("Tinto antioqueño", False)
+
+    print("\n" + "=" * 50)
+    print(tinto1.preparar())
+    print(tinto1. servir())
+
+    print("\n" + "=" * 50)
+    print(tinto2.preparar())
+    print(tinto2.servir())

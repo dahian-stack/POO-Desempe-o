@@ -1,0 +1,52 @@
+Nivel 2
+
+from abc import ABC, abstractmethod
+
+
+class Figura(ABC):
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+
+    @abstractmethod
+    def calcular_area(self):
+        pass
+
+    @abstractmethod
+    def calcular_perimetro(self):
+        pass
+
+class Rectangulo(Figura):
+    def __init__(self, base, altura):
+        super().__init__(base, altura)
+
+    def calcular_area(self):
+        return self.base * self.altura
+
+    def calcular_perimetro(self):
+        return 2 * (self.base + self.altura)
+
+class Triangulo(Figura):
+    def __init__(self, base, altura, lado_a, lado_b, lado_c):
+        super().__init__(base, altura)
+        self.lado_a = lado_a
+        self.lado_b = lado_b
+        self.lado_c = lado_c
+
+    def calcular_area(self):
+        return (self.base * self. altura) / 2
+
+    def calcular_perimetro(self):
+        return self.lado_a + self.lado_b + self.lado_c
+
+if __name__ in "__main__":
+    mi_rectangulo = Rectangulo(10,5)
+    mi_triangulo = Triangulo(6, 4, 5,5, 6)
+
+    print("\n" + "=" * 50)
+    print(f"Perimetro rectangulo: {mi_rectangulo.calcular_perimetro()}")
+    print(f"Area rectangulo: {mi_rectangulo.calcular_area()}")
+
+    print("\n" + "=" * 50)
+    print(f"Perimetro triangulo: {mi_triangulo.calcular_perimetro()}")
+    print(f"Area triangulo: {mi_triangulo.calcular_area()}")
